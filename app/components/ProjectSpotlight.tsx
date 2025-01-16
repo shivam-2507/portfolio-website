@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useIsMobile } from '../hooks/use-mobile'
 
 const projects = [
   {
@@ -49,13 +50,13 @@ const projects = [
     id: 4,
     title: 'Robotic Arm',
     description: ['Built a robotic arm on a strict $80 budget, showcasing innovation and resourcefulness. The project’s success earned a feature in a CTV News article.',
-        'Utilized a Logitech controller for robotic arm operation, ensuring seamless control during high-pressure tasks, including sorting red and orange balls.',
-        'Programmed the arm’s control system in C++, leveraging the ESP32 microcontroller for efficient motor control and real-time feedback.',
-        'Integrated overshoot correction, fine movement adjustments, and safety measures to enhance operator precision, enabling reliable sorting of red and orange balls.',
-        'Created a CAD model for a rotating disk plate in SolidWorks to enable arm rotation, optimizing the robotic arm’s functionality.',
-        <a href="https://grabcad.com/library/apega-rotating-disc-1" target ="_blank" className="text-blue-600 underline hover:scale-150 hover:shadow-lg hover:text-purple-400">CAD Model avaliable here</a>,
-        <a href="https://drive.google.com/file/d/127ZGrxaja8zKIWOa_CNgbDYacNtWknrk/view?usp=sharing" target ="_blank" className="text-blue-600 underline hover:scale-150 hover:shadow-lg hover:text-purple-400">Article avaliable here</a>,
-        <a href="https://drive.google.com/file/d/127ZGrxaja8zKIWOa_CNgbDYacNtWknrk/view?usp=sharing" target ="_blank" className="text-blue-600 underline hover:scale-150 hover:shadow-lg hover:text-purple-400">Video demo avaliable here</a>,
+      'Utilized a Logitech controller for robotic arm operation, ensuring seamless control during high-pressure tasks, including sorting red and orange balls.',
+      'Programmed the arm’s control system in C++, leveraging the ESP32 microcontroller for efficient motor control and real-time feedback.',
+      'Integrated overshoot correction, fine movement adjustments, and safety measures to enhance operator precision, enabling reliable sorting of red and orange balls.',
+      'Created a CAD model for a rotating disk plate in SolidWorks to enable arm rotation, optimizing the robotic arm’s functionality.',
+      <a href="https://grabcad.com/library/apega-rotating-disc-1" target ="_blank" className="text-blue-600 underline hover:scale-150 hover:shadow-lg hover:text-purple-400">CAD Model avaliable here</a>,
+      <a href="https://drive.google.com/file/d/127ZGrxaja8zKIWOa_CNgbDYacNtWknrk/view?usp=sharing" target ="_blank" className="text-blue-600 underline hover:scale-150 hover:shadow-lg hover:text-purple-400">Article avaliable here</a>,
+      <a href="https://drive.google.com/file/d/127ZGrxaja8zKIWOa_CNgbDYacNtWknrk/view?usp=sharing" target ="_blank" className="text-blue-600 underline hover:scale-150 hover:shadow-lg hover:text-purple-400">Video demo avaliable here</a>,
     ],
     image: 'APEGA Robot.png',
   },
@@ -63,9 +64,9 @@ const projects = [
     id: 5,
     title: 'CrisisCompass',
     description: ['Built a full-stack web application, “CrisisCompass,” to rank and display emergency incidents based on severity and trustworthiness. By analyzing words in an article, the application sorts events that require the most assistance.',
-    'Developed the backend with Python and Flask to scrape data from URLs, evaluate incidents using predefined keywords, and assign priority rankings. Used spaCy for natural language processing to extract keywords, locations, and analyze context.',
-    'Designed an interactive interface with React.js and Material-UI, enabling users to input URLs, view ranked incidents, and explore details such as severity, trust score, and location.',
-    'Dynamic features like live updates to incident rankings, sorting by severity, and indicators such as emojis and color-coded badges for better usability.',
+      'Developed the backend with Python and Flask to scrape data from URLs, evaluate incidents using predefined keywords, and assign priority rankings. Used spaCy for natural language processing to extract keywords, locations, and analyze context.',
+      'Designed an interactive interface with React.js and Material-UI, enabling users to input URLs, view ranked incidents, and explore details such as severity, trust score, and location.',
+      'Dynamic features like live updates to incident rankings, sorting by severity, and indicators such as emojis and color-coded badges for better usability.',
       <a href="https://github.com/shivam-2507/Crisis-Compass" target ="_blank" className="text-blue-600 underline hover:scale-150 hover:shadow-lg hover:text-purple-400">Code avaliable here</a>,
     ],
     image: 'download.gif',
@@ -73,6 +74,7 @@ const projects = [
 ]
 
 export default function ProjectSpotlight() {
+  const isMobile = useIsMobile()
   const [currentProject, setCurrentProject] = useState(0)
   const [isAutoScrollPaused, setIsAutoScrollPaused] = useState(false)
 
@@ -102,8 +104,8 @@ export default function ProjectSpotlight() {
   }, [nextProject, isAutoScrollPaused])
 
   return (
-      <div className="space-y-8">
-        <div className="flex flex-col lg:flex-row items-start gap-8 list-inside">
+      <div className={`space-y-8 ${isMobile ? 'text-center' : ''}`}>
+        <div className={`flex ${isMobile ? 'flex-col items-center' : 'flex-row'} items-start gap-8 list-inside`}>
           <AnimatePresence mode="wait">
             <motion.div
                 key={currentProject}
@@ -129,19 +131,19 @@ export default function ProjectSpotlight() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5 }}
-                className="w-full lg:w-1/2 space-y-4"
+                className={`w-full ${isMobile ? 'text-center' : 'lg:w-1/2'} space-y-4`}
             >
               <h2 className="text-2xl font-bold">{projects[currentProject].title}</h2>
-              <ul className="list-disc pl-5">
+              <ul className={`${isMobile ? 'list-none pl-0' : 'list-disc pl-5'}`}>
                 {projects[currentProject].description.map((point, index) => (
-                    <li key={index} className="mb-2">{point}</li>
+                    <li key={index} className={`mb-2 ${isMobile ? 'text-center' : ''}`}>{point}</li>
                 ))}
               </ul>
-              <div className="flex space-x-4 pt-4">
-                <Button onClick={prevProject} variant="outline" className="bg-black transition-all duration-300 hover:shadow-lg hover:shadow-white/25 hover:scale-105">
+              <div className={`flex ${isMobile ? 'flex-col items-center' : 'flex-row'} space-x-0 space-y-2 md:space-y-0 md:space-x-4 pt-4`}>
+                <Button onClick={prevProject} variant="outline" className={`bg-black transition-all duration-300 hover:shadow-lg hover:shadow-white/25 hover:scale-105 ${isMobile ? 'w-full' : ''}`}>
                   Previous Project
                 </Button>
-                <Button onClick={nextProject} variant="outline" className="bg-black transition-all duration-300 hover:shadow-lg hover:shadow-white/25 hover:scale-105">
+                <Button onClick={nextProject} variant="outline" className={`bg-black transition-all duration-300 hover:shadow-lg hover:shadow-white/25 hover:scale-105 ${isMobile ? 'w-full' : ''}`}>
                   Next Project
                 </Button>
               </div>

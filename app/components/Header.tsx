@@ -1,23 +1,25 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { useIsMobile } from '../hooks/use-mobile'
 
 export default function Header() {
+  const isMobile = useIsMobile()
+
   return (
       <header className="bg-black text-white py-6">
-        <div className="container mx-auto px-4 flex justify-between items-center">
-          <div>
+        <div className={`container mx-auto px-4 ${isMobile ? 'flex flex-col items-center' : 'flex justify-between items-center'}`}>
+          <div className={`${isMobile ? 'text-center mb-4' : ''}`}>
             <h1 className="text-3xl font-bold transition-all duration-300 hover:scale-110 hover:text-white hover:[text-shadow:_0_0_10px_rgb(255_255_255_/_100%)] inline-block">
-              {/* Wrap name with mailto link */}
               <a href="mailto:shivam.walia@uwaterloo.ca" className="text-white font-style: italic">
                 Shivam Walia
               </a>
             </h1>
-            <p className="mt-2 text-gray-300 max-w-[55%] text-left">
+            <p className={`mt-2 text-gray-300 ${isMobile ? 'w-full' : 'max-w-[55%]'} text-left`}>
               Mechatronics Engineering @UWaterloo. Passionate about robotics, embedded systems, and automation.
               Currently working with C++, Python, ROS, and ESP32.
             </p>
           </div>
-          <div className="social-icons flex space-x-4 -translate-y-7">
+          <div className={`social-icons flex space-x-4 ${isMobile ? 'mt-4' : '-translate-y-7'}`}>
             <Link
                 href="https://www.linkedin.com/in/shivam-walia1/"
                 target="_blank"
@@ -62,3 +64,4 @@ export default function Header() {
       </header>
   )
 }
+
