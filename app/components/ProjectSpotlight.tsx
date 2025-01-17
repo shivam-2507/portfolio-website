@@ -44,7 +44,7 @@ const projects = [
       <a href="https://cad.onshape.com/documents/b78b5554ab246ee5d90f5a28/w/0f3e5d2f1fb4d0e2f5aa764f/e/b5e66b9cff10db37914cf693" target="_blank" className="text-blue-600 underline hover:scale-150 hover:shadow-lg hover:text-purple-400">CAD Model</a>,
       <a href="https://github.com/shivam-2507/mechatronics-robot-c-class-project-1A" target="_blank" className="text-blue-600 underline hover:scale-150 hover:shadow-lg hover:text-purple-400">Code available here</a>,
     ],
-    image: 'Robot Lego.png',
+    image: 'Robot View 2.png',
   },
   {
     id: 4,
@@ -120,7 +120,7 @@ export default function ProjectSpotlight() {
                   alt={projects[currentProject].title}
                   width={300}
                   height={300}
-                  className="w-full h-auto rounded-lg shadow-lg transition-all duration-300 hover:shadow-[0px_4px_6px_rgba(0,0,0,0.3),0px_1px_3px_rgba(0,0,0,0.1)]"
+                  className={`w-full h-auto rounded-lg shadow-lg transition-all duration-300 hover:shadow-[0px_4px_6px_rgba(0,0,0,0.3),0px_1px_3px_rgba(0,0,0,0.1)] ${!isMobile && currentProject === 4 ? 'transform translate-y-13' : ''} ${!isMobile && currentProject === 4 ? 'transform translate-y-14' : ''} ${!isMobile && currentProject === 1 ? 'transform -translate-y-4' : ''} ${!isMobile && currentProject === 3 ? 'transform translate-y-10' : ''}`}
               />
             </motion.div>
           </AnimatePresence>
@@ -139,13 +139,18 @@ export default function ProjectSpotlight() {
                     <li key={index} className={`mb-2 ${isMobile ? 'text-center' : ''}`}>{point}</li>
                 ))}
               </ul>
-              <div className={`flex ${isMobile ? 'flex-col items-center' : 'flex-row'} space-x-0 space-y-2 md:space-y-0 md:space-x-4 pt-4`}>
-                <Button onClick={prevProject} variant="outline" className={`bg-black transition-all duration-300 hover:shadow-lg hover:shadow-white/25 hover:scale-105 ${isMobile ? 'w-full' : ''}`}>
-                  Previous Project
-                </Button>
-                <Button onClick={nextProject} variant="outline" className={`bg-black transition-all duration-300 hover:shadow-lg hover:shadow-white/25 hover:scale-105 ${isMobile ? 'w-full' : ''}`}>
-                  Next Project
-                </Button>
+              <div className={`flex ${isMobile ? 'flex-col items-center' : 'flex-row justify-between items-center'} space-y-2 md:space-y-0 pt-4`}>
+                <div className={`flex ${isMobile ? 'flex-col w-full' : 'flex-row'} space-x-0 space-y-2 md:space-y-0 md:space-x-4`}>
+                  <Button onClick={prevProject} variant="outline" className={`bg-black transition-all duration-300 hover:shadow-lg hover:shadow-white/25 hover:scale-105 ${isMobile ? 'w-full' : ''}`}>
+                    Previous Project
+                  </Button>
+                  <Button onClick={nextProject} variant="outline" className={`bg-black transition-all duration-300 hover:shadow-lg hover:shadow-white/25 hover:scale-105 ${isMobile ? 'w-full' : ''}`}>
+                    Next Project
+                  </Button>
+                </div>
+                <div className="text-sm text-gray-400">
+                  {currentProject + 1} of {projects.length}
+                </div>
               </div>
             </motion.div>
           </AnimatePresence>
