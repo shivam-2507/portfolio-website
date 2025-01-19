@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import { useIsMobile } from '../hooks/use-mobile'
+import { Linkedin, Github, Youtube, Mail } from 'lucide-react'
 
 export default function Header() {
   const isMobile = useIsMobile()
@@ -10,9 +10,7 @@ export default function Header() {
         <div className={`container mx-auto px-4 ${isMobile ? 'flex flex-col items-center' : 'flex justify-between items-center'}`}>
           <div className={`${isMobile ? 'text-center mb-4' : ''}`}>
             <h1 className="text-3xl font-bold transition-all duration-300 hover:scale-110 hover:text-white hover:[text-shadow:_0_0_10px_rgb(255_255_255_/_100%)] inline-block">
-              <a href="mailto:shivam.walia@uwaterloo.ca" className="text-white font-style: italic">
-                Shivam Walia
-              </a>
+              Shivam Walia
             </h1>
             <p className={`mt-2 text-gray-300 ${isMobile ? 'w-full' : 'max-w-[55%]'} text-left`}>
               Mechatronics Engineering @UWaterloo. Passionate about robotics, embedded systems, and automation.
@@ -21,43 +19,34 @@ export default function Header() {
           </div>
           <div className={`social-icons flex space-x-4 ${isMobile ? 'mt-4' : '-translate-y-7'}`}>
             <Link
+                href="mailto:shivam.walia@uwaterloo.ca"
+                className="transition-all duration-300 hover:scale-110 p-1 rounded-full"
+            >
+              <Mail className="w-8 h-8 text-gray-400 hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
+            </Link>
+            <Link
                 href="https://www.linkedin.com/in/shivam-walia1/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transition-all duration-300 hover:scale-110 p-1 rounded-full hover:bg-[#0077b5]/10 hover:shadow-[0_0_15px_#0077b5]"
+                className="transition-all duration-300 hover:scale-110 p-1 rounded-full"
             >
-              <Image
-                  src="/linkedin-logo.png"
-                  alt="LinkedIn"
-                  width={32}
-                  height={32}
-              />
+              <Linkedin className="w-8 h-8 text-gray-400 hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
             </Link>
             <Link
                 href="https://github.com/shivam-2507"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transition-all duration-300 hover:scale-110 p-1 rounded-full hover:bg-gray-100/10 hover:shadow-[0_0_15px_#ffffff]"
+                className="transition-all duration-300 hover:scale-110 p-1 rounded-full"
             >
-              <Image
-                  src="/github.png"
-                  alt="GitHub"
-                  width={32}
-                  height={32}
-              />
+              <Github className="w-8 h-8 text-gray-400 hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
             </Link>
             <Link
                 href="https://www.youtube.com/@Shivam-kx9ef"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transition-all duration-300 hover:scale-110 p-1 rounded-full hover:bg-[#ff0000]/10 hover:shadow-[0_0_15px_#ff0000]"
+                className="transition-all duration-300 hover:scale-110 p-1 rounded-full"
             >
-              <Image
-                  src="/youtube.png"
-                  alt="YouTube"
-                  width={32}
-                  height={32}
-              />
+              <Youtube className="w-8 h-8 text-gray-400 hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
             </Link>
           </div>
         </div>
