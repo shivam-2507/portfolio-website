@@ -12,7 +12,7 @@ export default function Header() {
             <h1 className="text-3xl font-bold transition-all duration-300 hover:scale-110 hover:text-white hover:[text-shadow:_0_0_10px_rgb(255_255_255_/_100%)] inline-block">
               Shivam Walia
             </h1>
-            <p className={`mt-2 text-gray-300 ${isMobile ? 'w-full' : 'max-w-[55%]'} text-left`}>
+            <p className={`mt-2 text-gray-300 ${isMobile ? 'w-full' : 'max-w-[60%]'} text-left`}>
               Mechatronics Engineering @UWaterloo. Passionate about robotics, embedded systems, and automation.
               Currently working with C++, Python, ROS, and ESP32.
             </p>
