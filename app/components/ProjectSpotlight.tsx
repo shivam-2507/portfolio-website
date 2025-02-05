@@ -114,7 +114,7 @@ const projects = [
         Video demo avaliable here
       </a>,
     ],
-    image: "APEGA Robot 1-min.png",
+    image: "Apega Robot 1-min.png",
   },
   {
     id: 5,
