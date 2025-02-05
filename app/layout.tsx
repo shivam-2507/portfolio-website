@@ -5,9 +5,9 @@ export const metadata: Metadata = {
     title: 'Shivam Walia',
     description: 'Shivam Walia Project Portfolio',
     icons: {
-        icon: '/logo.png',      // Remove /public from path
-        shortcut: '/logo.png',  // Remove /public from path
-        apple: '/logo.png',     // Remove /public from path
+        icon: '/Logo.png',      // Remove /public from path
+        shortcut: '/Logo.png',  // Remove /public from path
+        apple: '/Logo.png',     // Remove /public from path
     },
 }
 
