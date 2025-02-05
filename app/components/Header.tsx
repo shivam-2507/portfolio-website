@@ -12,9 +12,9 @@ export default function Header() {
             <h1 className="text-3xl font-bold transition-all duration-300 hover:scale-110 hover:text-white hover:[text-shadow:_0_0_10px_rgb(255_255_255_/_100%)] inline-block">
               Shivam Walia
             </h1>
-            <p className={`mt-2 text-gray-300 ${isMobile ? 'w-full' : 'max-w-[60%]'} text-left`}>
-              Mechatronics Engineering @UWaterloo. Passionate about robotics, embedded systems, and automation.
-              Currently working with C++, Python, ROS, and ESP32.
+            <p className={`mt-2 text-gray-300 ${isMobile ? 'w-full text-center' : 'max-w-[60%] text-left'}`}>
+              Mechatronics Engineering @UWaterloo. Passionate about <strong>robotics</strong>, <strong>embedded systems</strong>, and <strong>automation</strong>.
+              Currently working with <strong>C++</strong>, <strong>Python</strong>, <strong>ROS</strong>, and <strong>ESP32</strong>.
             </p>
           </div>
           <div className={`social-icons flex space-x-4 ${isMobile ? 'mt-4' : '-translate-y-7'}`}>
@@ -53,4 +53,3 @@ export default function Header() {
       </header>
   )
 }
-

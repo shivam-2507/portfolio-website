@@ -14,7 +14,7 @@ export default function Home() {
                 <Header />
 
                 {/* Main Content */}
-                <main className="flex-1 container mx-auto px-4 py-12">
+                <main className="flex-grow container mx-auto px-4 py-12">
                     <ProjectSpotlight />
                 </main>
 
